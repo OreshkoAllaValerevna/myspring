@@ -1,0 +1,144 @@
+body
+{
+    background-color:#ffffee;
+    color:#000099;
+    font-size:12pt;
+    text-align:justify;
+    font-family:"Times New Roman";
+    background: #ffffee;
+    margin: 5px;
+}
+#p1
+{
+    color:blue;
+    letter-spacing:4px;
+}
+#p2
+{
+    color:#000000;
+    font-size:10pt;
+    text-align:justify;
+    font-family:"Arial";
+    background: #ffffee;
+    margin-top: 2px; /* Отступ сверху */
+    margin-bottom: 0px; /* Отступ снизу */
+    margin-left: 80px;
+    margin-right: 80px;
+}
+ol.lis2, ul.lis1, .dd, #p3
+{
+    color: black;
+}
+.dt
+{
+    color: green;
+    text-decoration: underline;
+}
+.over
+{
+    color:#000000;
+    font-size:10pt;
+    text-align:justify;
+    font-family:"Arial";
+    background: #ffffee;
+    margin-top: 2px; /* Отступ сверху */
+    margin-bottom: 0px; /* Отступ снизу */
+    margin-left: 80px;
+    margin-right: 80px;
+    text-decoration: overline;
+}
+h1
+{
+    color:#990099;
+    font-size:22pt;
+    text-align:left;
+    font-family:"Arial";
+}
+h2
+{
+    color:#009900;
+    font-size:20pt;
+    text-align:left;
+    font-family:"Times New Roman";
+}
+h3
+{
+    color:#ff6600;
+    font-size:18pt;
+    text-align:right;
+    font-family:"Courier";
+}
+h4
+{
+    color:#0066ff;
+    font-size:16pt;
+    text-align:justify;
+    font-family:"Tahoma";
+}
+h5
+{
+    color:#6600ff;
+    font-size:20pt;
+    text-align:center;
+    font-family:"Times New Roman";
+    background: #ffffaa;
+}
+h6
+{
+    color:#5F9EA0;
+    font-size:14pt;
+    text-align:center;
+    font-family:"Arial";
+    text-decoration:line-through;
+}
+span
+{
+    color:red;
+    font-style:italic;
+}
+.tabl1
+{
+    border-style:solid;
+    border-color:black;
+}
+.th1
+{
+    background: #FFA500;
+    color: black;
+    border-style:solid;
+    text-align: center;
+}
+.td1
+{
+    color: blue;
+    border-style:solid;
+    border-color:black;
+}
+.tabl2
+{
+    text-align: center;
+    color: black;
+}
+.ts1
+{
+    background-color:#FFD700;
+    text-align: center;
+}
+.ts2
+{
+    text-align: center;
+}
+.ts3
+{
+    background: #FFA500;
+}
+.a1
+{
+    text-decoration: none;
+}
+a:hover
+{
+    text-decoration:underline;
+    color:red;
+    font-size:1.1em;
+}
