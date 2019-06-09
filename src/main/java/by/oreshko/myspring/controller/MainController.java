@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Slf4j
@@ -20,8 +21,8 @@ public class MainController {
 
     private static List<Person> persons = new ArrayList<Person>();
     static {
-        persons.add(new Person("Alla", "Oreshko", "Sovetskaya str.", "Minsk", "123456", "oreshko@tut.by", "1234567", "10/10/2000"));
-        persons.add(new Person("Olga", "Lapina", "Surganova str.", "Minsk", "987654", "lapina@tut.by", "9876543", "20/02/2000"));
+        persons.add(new Person("Alla", "Oreshko", "Sovetskaya str.", "Minsk", "123456", "oreshko@tut.by", "123456789", new Date(2001,12,06)));
+        persons.add(new Person("Olga", "Lapina", "Surganova str.", "Minsk", "987654", "lapina@tut.by", "987654321", new Date(2008,07,21)));
     }
 
     @Value("${welcome.message}")
@@ -81,7 +82,7 @@ public class MainController {
         String zip = personForm.getZip();
         String email = personForm.getEmail();
         String phone = personForm.getPhone();
-        String birthday = personForm.getBirthday();
+        Date birthday = (Date) personForm.getBirthday();
         Person newPerson = new Person(firstName, lastName, street, city, zip, email, phone, birthday);
         persons.add(newPerson);
         model.addAttribute("persons", persons);

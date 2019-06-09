@@ -3,6 +3,8 @@ package by.oreshko.myspring.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 public class Person {
@@ -13,5 +15,5 @@ public class Person {
     private String zip;
     private String email;
     private String phone;
-    private String birthday;
+    private Date birthday;
 }
