@@ -1,28 +1,27 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Add Person</title>
+    <title>Title</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<h2>New Person</h2>
-<form th:action="@{/addPerson}"
-      th:object="${personForm}" method="POST">
-
+<h1>Edit Person:</h1>
+<form th:action="@{/editPerson}"
+      th:object="${person}" method="POST">
     <div th:if="${#fields.hasErrors()}">
 <span class="validationError">
 Please correct the information.
 </span>
     </div>
-<br />
+    <input type="hidden" th:field="${person.id}" />
     First Name:
     <input type="text" th:field="*{firstName}" />
-<span class="validationError"
-      th:if="${#fields.hasErrors('firstName')}"
-      th:errors="*{firstName}">
+    <span class="validationError"
+          th:if="${#fields.hasErrors('firstName')}"
+          th:errors="*{firstName}">
  </span>
-    <br />
+    <br/>
     Last Name:
     <input type="text" th:field="*{lastName}" />
     <span class="validationError"
@@ -72,14 +71,8 @@ Please correct the information.
           th:errors="*{birthday}">
  </span>
     <br/>
-    <br />
-    <input type="submit" value="Create" />
+    <input type="submit" value="Edit" />
 </form>
-<br />
-
-<!--<div th:if="${errorMessage}" th:utext="${errorMessage}"
-     style="color: red; font-style: italic;">
-</div>-->
-
+<br/>
 </body>
 </html>

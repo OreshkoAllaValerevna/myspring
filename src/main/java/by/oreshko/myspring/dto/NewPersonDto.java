@@ -1,4 +1,4 @@
-package by.oreshko.myspring.form;
+package by.oreshko.myspring.dto;
 
 import by.oreshko.myspring.validator.CellPhone;
 import lombok.AllArgsConstructor;
@@ -12,8 +12,8 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PersonForm {
-
+public class NewPersonDto {
+    private Long personId;
     @NotNull(message="{valid.firstName.notNull}")
     @Size(min=3, message="{valid.firstName.size.min3}")
     private String firstName;
@@ -42,4 +42,5 @@ public class PersonForm {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Past(message = "{valid.birthday.past}")
     private Date birthday;
+
 }
