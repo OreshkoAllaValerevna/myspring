@@ -1,5 +1,7 @@
 package by.oreshko.myspring.controller;
 
+import by.oreshko.myspring.aop.AroundAnnotation;
+import by.oreshko.myspring.aop.LogAnnotation;
 import by.oreshko.myspring.dto.NewPersonDto;
 import by.oreshko.myspring.entity.Person;
 import by.oreshko.myspring.exceptions.NoSuchEntityException;
@@ -38,50 +40,57 @@ public class PersonController {
         this.personService = personService;
     }
 
+    @LogAnnotation
     @GetMapping(value = {"/", "/index"})
     public ModelAndView index (Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
         model.addAttribute("message", message);
 
-        log.info("index was called");
+        //log.info("index was called");
 
         return modelAndView;
     }
 
+    @LogAnnotation
+    @AroundAnnotation
     @GetMapping(value = {"/personList"})
     public ModelAndView personList (Model model) {
         List<Person> persons = personService.getAllPerson();
 
-        log.info("person List " + persons);
+        //log.info("person List " + persons);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("personList");
         model.addAttribute("persons", persons);
 
-        log.info("personList was called");
+        //log.info("personList was called");
 
         return modelAndView;
     }
 
+    @LogAnnotation
     @GetMapping(value = {"/addPerson"})
     public ModelAndView showAddPerson (Model model) {
         ModelAndView modelAndView = new ModelAndView("addPerson");
         NewPersonDto personForm = new NewPersonDto();
         model.addAttribute("personForm", personForm);
 
-        log.info("addPerson was called (GET) " + personForm);
+        //log.info("addPerson was called (GET) " + personForm);
 
         return modelAndView;
     }
 
+    @LogAnnotation
     @PostMapping(value = {"/addPerson"})
     public ModelAndView savePerson (Model model,
                                     @Valid @ModelAttribute("personForm") NewPersonDto personDto, Errors errors) {
         ModelAndView modelAndView = new ModelAndView();
         if (errors.hasErrors()){
             modelAndView.setViewName("addPerson");
-            log.info("addPerson was called (POST). New person wasn't created " + personDto);
+
+            //log.info("addPerson was called (POST). New person wasn't created " + personDto);
+
         }
         else {
             modelAndView.setViewName("personList");
@@ -98,13 +107,14 @@ public class PersonController {
             personService.addNewPerson(newPerson);
             model.addAttribute("persons", personService.getAllPerson());
 
-            log.info("addPerson was called (POST). New person was created "+ personDto);
+            //log.info("addPerson was called (POST). New person was created "+ personDto);
 
             return modelAndView;
         }
         return modelAndView;
     }
 
+    @LogAnnotation
     @RequestMapping(value = "/editPerson/{id}", method = RequestMethod.GET)
     public ModelAndView editPage(@PathVariable("id") int id) throws NoSuchEntityException {
         Person person = personService.getById(id).orElseThrow(()-> new NoSuchEntityException("Person not found") );
@@ -114,15 +124,19 @@ public class PersonController {
         return modelAndView;
     }
 
+    @LogAnnotation
     @RequestMapping(value = "/editPerson", method = RequestMethod.POST)
     public ModelAndView editPerson( @Valid @ModelAttribute("person") Person person, Errors errors) {
-        log.info("/editPerson - POST was called "+ person);
+
+        //log.info("/editPerson - POST was called "+ person);
+
         personService.addNewPerson(person);
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/personList");
         return modelAndView;
     }
 
+    @LogAnnotation
     @RequestMapping(value = "/deletePerson/{id}", method = RequestMethod.GET)
     public ModelAndView deletePerson(@PathVariable("id") Long id) throws NoSuchEntityException {
         Person person = personService.getById(id).orElseThrow(()-> new NoSuchEntityException("Person not found") );
